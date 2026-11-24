@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#050914">
+<title>AIMLOCK HIẾU VIP</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#050914;color:white;font-family:Arial,sans-serif}
+.screen{display:none;padding:22px 15px;min-height:100vh}
+.screen.active{display:block}
+h1{text-align:center;color:#16dfff;text-shadow:0 0 15px #008cff}
+p{text-align:center;color:#9ab5d5}
+.panel{background:#0b192c;border:1px solid #087ebc;border-radius:18px;padding:18px;margin:16px 0;box-shadow:0 0 16px #008cff33}
+input,select,button{width:100%;padding:15px;border-radius:12px;margin-top:12px;font-size:16px}
+input,select{background:#101e32;border:1px solid #168fc5;color:white}
+button{background:linear-gradient(90deg,#00aaff,#653bdb);border:0;color:white;font-weight:bold}
+.item{display:flex;align-items:center;justify-content:space-between;background:#13243b;padding:14px;border-radius:12px;margin:10px 0}
+.item input{width:25px;height:25px;margin:0;accent-color:#00cfff}
+.small{font-size:12px;color:#91aaca}
+</style>
+</head>
+<body>
+
+<section id="login" class="screen active">
+<h1>AIMLOCK HIẾU VIP</h1>
+<p>FREE FIRE • PREMIUM VERSION</p>
+<div class="panel">
+<h2 style="text-align:center">NHẬP KEY</h2>
+<p>Nhập mã truy cập của bạn</p>
+<input id="key" placeholder="Nhập KEY của bạn...">
+<button onclick="unlock()">XÁC NHẬN KEY</button>
+<p id="msg" class="small"></p>
+</div>
+</section>
+
+<section id="home" class="screen">
+<h1>AIMLOCK HIẾU VIP</h1>
+<p>WELCOME TO PREMIUM</p>
+
+<div class="panel">
+<h3>CHỨC NĂNG GIAO DIỆN</h3>
+<div id="features"></div>
+</div>
+
+<div class="panel">
+<h3>CHỌN PHIÊN BẢN GAME</h3>
+<select id="game">
+<option>FREE FIRE MAX</option>
+<option>FREE FIRE VN</option>
+<option>FREE FIRE THƯỜNG</option>
+</select>
+<button onclick="launch()">VÀO GAME</button>
+<p id="status" class="small"></p>
+</div>
+</section>
+
+<script>
+const features=[
+"AIM MODE",
+"PRECISION MODE",
+"SMOOTH MODE",
+"STABILITY MODE",
+"CUSTOM CONFIG"
+];
+
+document.getElementById("features").innerHTML=
+features.map(x=>`
+<div class="item">
+<strong>${x}</strong>
+<input type="checkbox" aria-label="${x}">
+</div>`).join("");
+
+function unlock(){
+const key=document.getElementById("key").value.trim();
+if(!key){
+document.getElementById("msg").textContent="Vui lòng nhập KEY!";
+return;
+}
+document.getElementById("msg").textContent=
+"Đây là bản demo, chưa kết nối máy chủ xác thực KEY.";
+}
+
+function launch(){
+document.getElementById("status").textContent=
+"Đã chọn "+document.getElementById("game").value+
+". Bản demo chưa có liên kết mở game.";
+}
+</script>
+</body>
+</html>
